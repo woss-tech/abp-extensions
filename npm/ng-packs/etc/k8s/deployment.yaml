@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-publicweb
+  namespace: lopos
+spec: 
+  selector:
+    matchLabels:
+      app: app-publicweb
+  template:
+    metadata:
+      labels:
+        app: app-publicweb
+    spec:
+      containers:
+        - name: app-publicweb
+          image: loposan-docker.pkg.coding.net/registry/docker/IMAGE
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP

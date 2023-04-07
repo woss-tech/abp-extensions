@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/theme-shared/src",
+  "prefix": "lopos",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/theme-shared"],
+      "options": {
+        "project": "libs/theme-shared/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/theme-shared/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/theme-shared/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/theme-shared"],
+      "options": {
+        "jestConfig": "libs/theme-shared/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/theme-shared/**/*.ts",
+          "libs/theme-shared/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

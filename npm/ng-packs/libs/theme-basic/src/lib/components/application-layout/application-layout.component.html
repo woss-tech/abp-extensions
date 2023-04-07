@@ -1,0 +1,70 @@
+<nz-layout style="height: 100vh">
+  <nz-sider
+    nzCollapsible
+    [nzWidth]="240"
+    (nzCollapsedChange)="collapsedChange($event)"
+  >
+    <div class="logo">
+      <lopos-logo [appName]="appName"></lopos-logo>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <ng-container
+        [ngTemplateOutlet]="menuTpl"
+        [ngTemplateOutletContext]="{ $implicit: routes }"
+      ></ng-container>
+      <ng-template #menuTpl let-routes>
+        <ng-container *ngFor="let route of routes">
+          <ng-container
+            [ngTemplateOutlet]="isSubmenu(route) ? submenu : defaultMenu"
+          >
+            <ng-template #defaultMenu>
+              <li
+                *abpPermission="route.requiredPolicy"
+                nz-menu-item
+                [nzPaddingLeft]="padding(route)"
+                [nzSelected]="selected(route)"
+                nz-tooltip
+                nzTooltipPlacement="right"
+                [nzTooltipTitle]="
+                  isCollapsed ? (route.name | abpLocalization) : ''
+                "
+              >
+                <a [routerLink]="[route.path]">
+                  <i
+                    nz-icon
+                    [nzType]="route.iconClass"
+                    *ngIf="route.iconClass"
+                  ></i>
+                  <span>{{ route.name | abpLocalization }}</span>
+                </a>
+              </li>
+            </ng-template>
+
+            <ng-template #submenu>
+              <li
+                *abpPermission="route.requiredPolicy"
+                nz-submenu
+                [nzTitle]="route.name | abpLocalization"
+                [nzIcon]="route.iconClass"
+                [nzPaddingLeft]="padding(route)"
+              >
+                <ul>
+                  <ng-container
+                    [ngTemplateOutlet]="menuTpl"
+                    [ngTemplateOutletContext]="{ $implicit: route.children }"
+                  ></ng-container>
+                </ul>
+              </li>
+            </ng-template>
+          </ng-container>
+        </ng-container>
+      </ng-template>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header><lopos-nav-items></lopos-nav-items></nz-header>
+    <nz-content>
+      <div class="inner-content"><router-outlet></router-outlet></div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

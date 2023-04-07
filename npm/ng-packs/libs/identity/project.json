@@ -1,0 +1,38 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/identity/src",
+  "prefix": "lopos",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/identity"],
+      "options": {
+        "project": "libs/identity/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/identity/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/identity/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/identity"],
+      "options": {
+        "jestConfig": "libs/identity/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/identity/**/*.ts", "libs/identity/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

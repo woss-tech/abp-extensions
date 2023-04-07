@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-publicweb
+  namespace: lopos
+spec:
+  selector:
+    app: app-publicweb
+  type: ClusterIP
+  ports:
+    - protocol: TCP 
+      port: 80
+      targetPort: 80

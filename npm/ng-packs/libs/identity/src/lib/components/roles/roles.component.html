@@ -1,0 +1,108 @@
+<div nz-row nzGutter="8">
+  <div nz-col nzSpan="24">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>首页</nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a href="#">身份认证管理</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>角色</nz-breadcrumb-item>
+    </nz-breadcrumb>
+  </div>
+
+  <div nz-col nzSpan="24" class="padding-10">
+    <h1 nz-typography>角色</h1>
+  </div>
+
+  <div nz-col nzSpan="24">
+    <nz-space>
+      <button
+        nz-button
+        nzType="primary"
+        *nzSpaceItem
+        (click)="createOrUpdate()"
+      >
+        创建角色
+      </button>
+
+      <nz-input-group
+        [nzSuffix]="suffixIconSearch"
+        *nzSpaceItem
+        style="width: 260px"
+      >
+        <input
+          type="text"
+          nz-input
+          placeholder="输入角色名称"
+          [(ngModel)]="query.filter"
+          (keyup.enter)="hookToQuery()"
+        />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+    </nz-space>
+
+    <button nz-button style="float: right" (click)="refresh()">
+      <i nz-icon nzType="reload"></i>
+    </button>
+  </div>
+
+  <div nz-col nzSpan="24" class="padding-10">
+    <nz-table
+      #nzTable
+      [nzData]="items"
+      [nzPageIndex]="pageIndex"
+      [nzPageSize]="pageSize"
+      [nzLoading]="loading"
+      [nzTotal]="total"
+      [nzHideOnSinglePage]="true"
+      (nzPageSizeChange)="handlerPageSizeChange($event)"
+      (nzPageIndexChange)="handlerPageIndexChange($event)"
+    >
+      <thead>
+        <tr>
+          <th
+            [nzShowSort]="true"
+            nzColumnKey="name"
+            (nzSortOrderChange)="handlerSortChanged($event, 'name')"
+          >
+            角色名称
+          </th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of nzTable.data">
+          <td>
+            {{ item.name }}
+            &nbsp;
+            <ng-container *ngIf="item.isPublic">
+              <nz-tag nzColor="green">公开</nz-tag>
+            </ng-container>
+
+            <ng-container *ngIf="item.isDefault">
+              <nz-tag nzColor="blue">默认</nz-tag>
+            </ng-container>
+          </td>
+          <td>
+            <nz-space>
+              <a
+                href="javascript:;"
+                (click)="createOrUpdate(item.id)"
+                *nzSpaceItem
+                >编辑</a
+              >
+              <nz-divider nzType="vertical" *nzSpaceItem></nz-divider>
+              <a href="javascript:;" *nzSpaceItem>授权</a>
+
+              <ng-container *ngIf="!item.isStatic">
+                <nz-divider nzType="vertical" *nzSpaceItem></nz-divider>
+                <a href="javascript:;" *nzSpaceItem>删除</a>
+              </ng-container>
+            </nz-space>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

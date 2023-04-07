@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Version>6.0.3.0</Version>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Volo.Abp.Shared.Hosting.Gateways</RootNamespace>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <ProjectReference Include="..\Woss.Abp.Shared.Hosting.AspNetCore\Woss.Abp.Shared.Hosting.AspNetCore.csproj" />
+    </ItemGroup>
+
+</Project>

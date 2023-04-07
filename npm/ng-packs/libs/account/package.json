@@ -1,0 +1,13 @@
+{
+  "name": "@lopos/ng.account",
+  "version": "0.0.2",
+  "peerDependencies": {
+    "@lopos/ng.theme.shared": "~0.0.2"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "publishConfig": {
+    "@lopos:registry": "https://loposan-npm.pkg.coding.net/registry/npm/"
+  }
+}

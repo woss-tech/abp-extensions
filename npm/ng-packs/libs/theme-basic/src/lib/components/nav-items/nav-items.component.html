@@ -1,0 +1,36 @@
+<div class="user-menu">
+  <nz-space [nzSize]="16">
+    <a nz-dropdown [nzDropdownMenu]="user" *nzSpaceItem class="user-menu-item">
+      <nz-avatar nzShape="circle" nzIcon="user" nzSize="small"></nz-avatar
+      >&nbsp; {{ currentUser.userName }}
+    </a>
+
+    <a href="#" *nzSpaceItem> </a>
+
+    <nz-dropdown-menu #user="nzDropdownMenu">
+      <ul nz-menu nzSelectable style="width: 160px">
+        <li style="padding: 0 12px; cursor: pointer">
+          <div class="user-menu-info">
+            <div style="width: 40px; margin-right: 6px">
+              <nz-avatar
+                nzShape="circle"
+                nzIcon="user"
+                nzSize="large"
+              ></nz-avatar>
+            </div>
+            <div style="flex: 1">
+              <p nz-typography>
+                欢迎，<br />
+                <strong> {{ currentUser.userName }}</strong>
+              </p>
+            </div>
+          </div>
+        </li>
+        <li nz-menu-divider></li>
+        <li nz-menu-item>我的账号</li>
+        <li nz-menu-item>安全日志</li>
+        <li nz-menu-item (click)="logout()">注销</li>
+      </ul>
+    </nz-dropdown-menu>
+  </nz-space>
+</div>

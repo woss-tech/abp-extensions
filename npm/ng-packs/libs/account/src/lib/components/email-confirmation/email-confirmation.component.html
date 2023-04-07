@@ -1,0 +1,37 @@
+<div nz-row nzAlign="middle" nzJustify="center" style="height: 100%">
+  <nz-col nzSpan="6" nzFlex="flex">
+    <h1 nz-typography>邮箱确认</h1>
+
+    <ng-container *ngIf="data?.succeeded; else error">
+      <nz-alert
+        nzType="success"
+        nzShowIcon
+        nzMessage="邮箱已验证"
+        [nzDescription]="successMessageTpl"
+      ></nz-alert>
+
+      <ng-template #successMessageTpl>
+        <span
+          >你的邮箱已完成验证，
+          <a [routerLink]="['/account/login']">返回登录</a>
+        </span>
+      </ng-template>
+    </ng-container>
+
+    <ng-template #error>
+      <nz-alert
+        nzType="error"
+        nzShowIcon
+        [nzMessage]="'邮箱验证不通过' + code"
+        [nzDescription]="errorMessageTpl"
+      >
+      </nz-alert>
+      <ng-template #errorMessageTpl>
+        <span
+          >邮箱验证失败，{{ description }}，
+          <a href="javascript:;" (click.once)="resendEmail()">重新发送</a>
+        </span>
+      </ng-template>
+    </ng-template>
+  </nz-col>
+</div>

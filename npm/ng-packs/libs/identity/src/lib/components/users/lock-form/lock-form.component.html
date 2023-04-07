@@ -1,0 +1,18 @@
+<form nz-form [formGroup]="lockForm" nzLayout="vertical" [nzAutoTips]="tips">
+  <nz-form-item>
+    <nz-form-label nzRequired>锁定到</nz-form-label>
+    <nz-form-control>
+      <nz-date-picker
+        nzShowTime
+        nzFormat="yyyy-MM-dd HH:mm:ss"
+        style="width: 100%"
+        formControlName="lockEndTime"
+      ></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+<div *nzModalFooter>
+  <button nz-button nzType="default" (click)="cancel()">取消</button>
+  <button nz-button nzType="primary" (click)="save()">保存</button>
+</div>

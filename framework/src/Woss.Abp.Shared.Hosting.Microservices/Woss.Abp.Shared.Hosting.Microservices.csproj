@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Version>6.0.3.1</Version>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Volo.Abp.Shared.Hosting.Microservices</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AdministrationService.EntityFrameworkCore" Version="1.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.4" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+        <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="7.1.1" />
+        <PackageReference Include="Volo.Abp.DistributedLocking" Version="7.1.1" />
+        <PackageReference Include="DistributedLock.Redis" Version="1.0.2" />
+        <PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" Version="7.1.1" />
+        <PackageReference Include="Volo.Abp.MongoDB" Version="7.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Woss.Abp.Shared.Hosting.AspNetCore\Woss.Abp.Shared.Hosting.AspNetCore.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="DbMigrations\EfCore" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/extension/src",
+  "prefix": "lopos",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/extension"],
+      "options": {
+        "project": "libs/extension/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/extension/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/extension/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/extension"],
+      "options": {
+        "jestConfig": "libs/extension/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/extension/**/*.ts",
+          "libs/extension/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

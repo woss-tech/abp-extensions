@@ -1,0 +1,42 @@
+<nz-row style="height: 100vh">
+  <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="12">
+    <div nz-row nzAlign="middle" nzJustify="center" style="height: 100%">
+      <div nz-col nzSpan="24">
+        <nz-tag>QingTX: 轻提醒</nz-tag>
+      </div>
+
+      <div
+        nz-col
+        nzXs="18"
+        nzSm="12"
+        nzMd="16"
+        nzLg="12"
+        nzXl="8"
+        nzXXl="6"
+        class="login-container"
+      >
+        <router-outlet></router-outlet>
+      </div>
+
+      <div nz-col nzSpan="24">
+        <p class="text-center">
+          &copy; 2022 qingtx.online
+          <nz-divider nzType="vertical"></nz-divider>
+          <a href="#">服务协议</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a href="#">隐私政策</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a href="#">浙ICP备2021021743号</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div nz-col nzSm="0" nzXs="0" nzMd="12" nzLg="12" nzXl="12" nzXXl="12">
+    <nz-carousel [nzEffect]="effect">
+      <div nz-carousel-content *ngFor="let index of array">
+        <h3>{{ index }}</h3>
+      </div>
+    </nz-carousel>
+  </div>
+</nz-row>

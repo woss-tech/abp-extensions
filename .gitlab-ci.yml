@@ -1,0 +1,35 @@
+variables:
+  TAG: "1.0.0-rc.${CI_COMMIT_SHORT_SHA}"
+  IMAGE: "app-publicweb:${TAG}"
+  REGISTRY_IMAGE: "loposan-docker.pkg.coding.net/registry/docker/${IMAGE}"
+
+stages:
+  - build
+  - deploy
+
+build-image:
+  stage: build
+  script:
+    - docker build -f npm/ng-packs/Dockerfile . -t $IMAGE
+    - docker tag $IMAGE $REGISTRY_IMAGE
+    - docker push $REGISTRY_IMAGE
+    - docker rmi $IMAGE
+    - docker rmi $REGISTRY_IMAGE
+  tags:
+    - shell
+  only:
+    - /^(releases)|(hotfix)/
+  allow_failure: false
+
+deploy-service:
+  stage: deploy
+  script:
+    - sed -i "s/IMAGE/$IMAGE/g" npm/ng-packs/etc/k8s/deployment.yaml
+    - kubectl apply -f npm/ng-packs/etc/k8s/
+  tags:
+    - shell
+  dependencies:
+    - build-image
+  only:
+    - /^(releases)|(hotfix)/
+  allow_failure: false

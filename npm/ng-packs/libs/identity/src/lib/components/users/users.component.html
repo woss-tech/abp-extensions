@@ -1,0 +1,200 @@
+<div nz-row nzGutter="8">
+  <div nz-col nzSpan="24">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>首页</nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a href="#">身份认证管理</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>用户</nz-breadcrumb-item>
+    </nz-breadcrumb>
+  </div>
+
+  <div nz-col nzSpan="24" class="padding-10">
+    <h1 nz-typography>用户</h1>
+  </div>
+
+  <div nz-col nzSpan="24">
+    <nz-space>
+      <nz-input-group
+        [nzSuffix]="suffixIconSearch"
+        *nzSpaceItem
+        style="width: 260px"
+      >
+        <input
+          type="text"
+          nz-input
+          placeholder="输入关键词检索"
+          [(ngModel)]="query.filter"
+          (keyup.enter)="hookToQuery()"
+        />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+    </nz-space>
+
+    <button nz-button style="float: right">
+      <i nz-icon nzType="reload"></i>
+    </button>
+  </div>
+
+  <div nz-col nzSpan="24" class="padding-10">
+    <nz-table
+      #nzTable
+      [nzData]="items"
+      [nzPageIndex]="pageIndex"
+      [nzPageSize]="pageSize"
+      [nzLoading]="loading"
+      [nzTotal]="total"
+      [nzShowSizeChanger]="true"
+      (nzPageIndexChange)="handlerPageIndexChange($event)"
+      (nzPageSizeChange)="handlerPageSizeChange($event)"
+    >
+      <thead>
+        <tr>
+          <th
+            [nzShowSort]="true"
+            nzColumnKey="userName"
+            (nzSortOrderChange)="handlerSortChanged($event, 'userName')"
+          >
+            用户名
+          </th>
+          <th
+            [nzShowSort]="true"
+            nzColumnKey="email"
+            (nzSortOrderChange)="handlerSortChanged($event, 'email')"
+          >
+            邮箱
+          </th>
+          <th>角色</th>
+          <th>手机号</th>
+          <th
+            [nzShowSort]="true"
+            nzColumnKey="name"
+            (nzSortOrderChange)="handlerSortChanged($event, 'name')"
+          >
+            姓名
+          </th>
+          <th
+            [nzShowSort]="true"
+            nzColumnKey="isActive"
+            (nzSortOrderChange)="handlerSortChanged($event, 'isActive')"
+          >
+            启用
+          </th>
+          <th
+            [nzShowSort]="true"
+            nzColumnKey="lockoutEnabled"
+            (nzSortOrderChange)="handlerSortChanged($event, 'lockoutEnabled')"
+          >
+            登录尝试失败后锁定账户
+          </th>
+
+          <th
+            [nzShowSort]="true"
+            nzColumnKey="emailConfirmed"
+            (nzSortOrderChange)="handlerSortChanged($event, 'emailConfirmed')"
+          >
+            邮箱确认
+          </th>
+          <th
+            [nzShowSort]="true"
+            nzColumnKey="creationTime"
+            (nzSortOrderChange)="handlerSortChanged($event, 'creationTime')"
+          >
+            创建时间
+          </th>
+          <th
+            [nzShowSort]="true"
+            nzColumnKey="lastModificationTime"
+            (nzSortOrderChange)="
+              handlerSortChanged($event, 'lastModificationTime')
+            "
+          >
+            最后更新
+          </th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of nzTable.data">
+          <td>
+            <ng-container
+              *ngIf="item.lockoutEnd !== undefined; else lockoutEnd"
+            >
+              <span
+                [title]="'账号锁定到' + (item.lockoutEnd | shortDateTime)"
+                nz-typography
+                [nzDisabled]="true"
+              >
+                <span nz-icon nzType="lock" nzTheme="outline"></span>
+                {{ item.userName }}
+              </span>
+            </ng-container>
+
+            <ng-template #lockoutEnd>
+              {{ item.userName }}
+            </ng-template>
+          </td>
+          <td>{{ item.email }}</td>
+          <td>-</td>
+          <td>{{ item.phoneNumber }}</td>
+          <td>{{ item.name }}</td>
+          <td>
+            <ng-container *ngIf="item.isActive; else isActive">
+              <nz-badge nzStatus="success" nzText="启用"></nz-badge>
+            </ng-container>
+
+            <ng-template #isActive>
+              <nz-badge nzStatus="error" nzText="禁用"></nz-badge>
+            </ng-template>
+          </td>
+          <td>
+            <ng-container *ngIf="item.lockoutEnabled; else lockoutEnabled">
+              <nz-badge nzStatus="success" nzText="启用"></nz-badge>
+            </ng-container>
+
+            <ng-template #lockoutEnabled>
+              <nz-badge nzStatus="error" nzText="禁用"></nz-badge>
+            </ng-template>
+          </td>
+          <td>
+            <ng-container *ngIf="item.emailConfirmed; else emailConfirmed">
+              <nz-badge nzStatus="success" nzText="已确认"></nz-badge>
+            </ng-container>
+
+            <ng-template #emailConfirmed>
+              <nz-badge nzStatus="error" nzText="未确认"></nz-badge>
+            </ng-template>
+          </td>
+          <td>
+            {{ item.creationTime | shortDateTime }}
+          </td>
+          <td>
+            {{
+              item.lastModificationTime === undefined
+                ? ''
+                : (item.lastModificationTime | shortDateTime)
+            }}
+          </td>
+
+          <td>
+            <nz-space nzSize="small">
+              <a href="javascript:;" *nzSpaceItem>编辑</a>
+              <nz-divider nzType="vertical" *nzSpaceItem></nz-divider>
+              <a href="javascript:;" *nzSpaceItem (click)="lock(item.id)"
+                >锁定</a
+              >
+              <nz-divider nzType="vertical" *nzSpaceItem></nz-divider>
+              <a href="javascript:;" *nzSpaceItem>设置密码</a>
+              <nz-divider nzType="vertical" *nzSpaceItem></nz-divider>
+              <a href="javascript:;" *nzSpaceItem>发信</a>
+              <nz-divider nzType="vertical" *nzSpaceItem></nz-divider>
+              <a href="javascript:;" *nzSpaceItem>删除</a>
+            </nz-space>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

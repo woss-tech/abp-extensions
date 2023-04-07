@@ -1,0 +1,14 @@
+{
+  "name": "@lopos/ng.theme.shared",
+  "version": "0.0.2",
+  "peerDependencies": {
+    "@lopos/ng.core.extension": "~0.0.2",
+    "ng-zorro-antd": "^14.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "publishConfig": {
+    "@lopos:registry": "https://loposan-npm.pkg.coding.net/registry/npm/"
+  }
+}

@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1057C048-A59A-4BD7-B461-219B59BB60A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Woss.Abp.Shared.Hosting", "src\Woss.Abp.Shared.Hosting\Woss.Abp.Shared.Hosting.csproj", "{67C84C77-5BE0-412A-9473-95FF3DCE51C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Woss.Abp.Shared.Hosting.AspNetCore", "src\Woss.Abp.Shared.Hosting.AspNetCore\Woss.Abp.Shared.Hosting.AspNetCore.csproj", "{3762772F-5E28-4799-A513-3CCA7EE24121}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Woss.Abp.Shared.Hosting.Microservices", "src\Woss.Abp.Shared.Hosting.Microservices\Woss.Abp.Shared.Hosting.Microservices.csproj", "{4D2563A6-4F99-42B2-BEA5-A8A30AC4682F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Woss.Abp.Shared.Localization", "src\Woss.Abp.Shared.Localization\Woss.Abp.Shared.Localization.csproj", "{2EED115D-4A54-437B-B03E-7FCDE9F32981}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{00EF636A-254F-4F73-908E-CC74A670A170}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Woss.Abp.EntityFrameworkCore.Extensions", "src\Woss.Abp.EntityFrameworkCore.Extensions\Woss.Abp.EntityFrameworkCore.Extensions.csproj", "{4F466094-E7BB-4196-A557-50BAF0030F95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{67C84C77-5BE0-412A-9473-95FF3DCE51C8} = {1057C048-A59A-4BD7-B461-219B59BB60A8}
+		{3762772F-5E28-4799-A513-3CCA7EE24121} = {1057C048-A59A-4BD7-B461-219B59BB60A8}
+		{4D2563A6-4F99-42B2-BEA5-A8A30AC4682F} = {1057C048-A59A-4BD7-B461-219B59BB60A8}
+		{2EED115D-4A54-437B-B03E-7FCDE9F32981} = {1057C048-A59A-4BD7-B461-219B59BB60A8}
+		{4F466094-E7BB-4196-A557-50BAF0030F95} = {1057C048-A59A-4BD7-B461-219B59BB60A8}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67C84C77-5BE0-412A-9473-95FF3DCE51C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67C84C77-5BE0-412A-9473-95FF3DCE51C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67C84C77-5BE0-412A-9473-95FF3DCE51C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67C84C77-5BE0-412A-9473-95FF3DCE51C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3762772F-5E28-4799-A513-3CCA7EE24121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3762772F-5E28-4799-A513-3CCA7EE24121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3762772F-5E28-4799-A513-3CCA7EE24121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3762772F-5E28-4799-A513-3CCA7EE24121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D2563A6-4F99-42B2-BEA5-A8A30AC4682F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D2563A6-4F99-42B2-BEA5-A8A30AC4682F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D2563A6-4F99-42B2-BEA5-A8A30AC4682F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D2563A6-4F99-42B2-BEA5-A8A30AC4682F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EED115D-4A54-437B-B03E-7FCDE9F32981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EED115D-4A54-437B-B03E-7FCDE9F32981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EED115D-4A54-437B-B03E-7FCDE9F32981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EED115D-4A54-437B-B03E-7FCDE9F32981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F466094-E7BB-4196-A557-50BAF0030F95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F466094-E7BB-4196-A557-50BAF0030F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F466094-E7BB-4196-A557-50BAF0030F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F466094-E7BB-4196-A557-50BAF0030F95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
